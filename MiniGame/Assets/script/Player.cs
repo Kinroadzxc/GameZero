@@ -23,6 +23,21 @@ public class Player : MonoBehaviour
         x = Input.GetAxis("Horizontal");
         y = Input.GetAxis("Vertical");
 
+        if (x>0)
+        {
+            _rigidbody2D.transform.eulerAngles = new Vector3(x:0f,y:0f,z:0f);
+            _animator.SetBool(name:"run",value:true);
+        }
+        if (x<0)
+        {
+            _rigidbody2D.transform.eulerAngles = new Vector3(x:0f,y:0f,z:0f);
+            _animator.SetBool(name:"run",value:true);
+        }
+        if (x<0.001f && x>-0.001f)
+        {
+            _animator.SetBool(name:"run",value:false);
+        }
+
         Run();
     }
     private void Run()
